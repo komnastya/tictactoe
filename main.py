@@ -1,6 +1,4 @@
-from board import Board, InvalidMoveError
-from game import game, get_computer_move, get_human_move, get_move
-
+from game import game
 
 print("Welcome to the Tic Tac Toe game!")
 
