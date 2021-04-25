@@ -43,7 +43,7 @@ def game():
         except InvalidMoveError as error:
             print(error)
             continue
-        board.show()
+        print (board)
 
     print("Game over!")
     winner = board.get_winner()

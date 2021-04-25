@@ -39,11 +39,12 @@ class Board:
     def is_cell_empty(self, v, h):
         return self._board[v][h] == " "
 
-    def show(self):
-        for i in range(len(self._board)):
-            print("+---+---+---+")
-            print("|", end="")
-            for j in range(len(self._board)):
-                print(f" {self._board[i][j]} |", end="")
-            print()
-        print("+---+---+---+")
+    def __str__(self):
+        board = self._board
+        return ("+---+---+---+\n"
+                f"| {board[0][0]} | {board[0][1]} | {board[0][2]} |\n"
+                "+---+---+---+\n"
+                f"| {board[1][0]} | {board[1][1]} | {board[1][2]} |\n"
+                "+---+---+---+\n"
+                f"| {board[2][0]} | {board[2][1]} | {board[2][2]} |\n"
+                "+---+---+---+")
