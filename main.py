@@ -5,4 +5,4 @@ print("Welcome to the Tic Tac Toe game!")
 
 while True:
     print("Let's play!")
-    game(get_human_move, get_human_move)
+    game(get_human_move, get_computer_move)
