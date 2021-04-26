@@ -1,5 +1,5 @@
 import unittest
-from board import Board
+from board import Board, InvalidMoveError
 
 
 class TestBoard(unittest.TestCase):
@@ -116,6 +116,30 @@ class TestBoard(unittest.TestCase):
                 "+---+---+---+"
             ),
         )
+
+    def test_raise_exception_if_cell_is_not_empty(self):
+        board = Board()
+        board.make_move(0, 0)
+
+        self.assertFalse(board.is_cell_empty(0, 0))
+
+        with self.assertRaises(InvalidMoveError) as ctx:
+            board.make_move(0, 0)
+        self.assertEqual(str(ctx.exception), "Cell (1, 1) is already occupied.")
+
+    def test_raise_exception_if_game_is_over(self):
+        board = Board()
+        board.make_move(0, 0)
+        board.make_move(0, 1)
+        board.make_move(1, 1)
+        board.make_move(0, 2)
+        board.make_move(2, 2)
+
+        self.assertTrue(board.is_game_over())
+
+        with self.assertRaises(InvalidMoveError) as ctx:
+            board.make_move(2, 1)
+        self.assertEqual(str(ctx.exception), "Game is already over.")
 
 
 if __name__ == "__main__":
